@@ -24,29 +24,6 @@ public class ExternalCallingService {
     private final ObjectMapper objectMapper;
     private final OkHttpClientCustom okHttpClientCustom;
 
-   /* public LoginResponse retrieveUserData(String url, String username, String password, String applicationId) throws IOException  {
-        HttpUrl.Builder urlBuilder = HttpUrl.parse(url).newBuilder();
-        urlBuilder.addQueryParameter("username", username);
-        urlBuilder.addQueryParameter("password", password);
-        urlBuilder.addQueryParameter("application-id", applicationId);
-
-        String urlWithParams = urlBuilder.build().toString();
-
-        Request request = new Request.Builder()
-                .url(urlWithParams)
-                .build();
-
-        log.info("Chiamata allo user-service con URL: {}", urlWithParams);
-
-        Response response = okHttpClientCustom.okHttpClient().newCall(request).execute();
-        String responseBody = response.body().string();
-
-        log.info("Risposta ricevuta dallo user-service: {}", responseBody);
-
-        return objectMapper.readValue(responseBody, LoginResponse.class);
-    }
-*/
-
     public LoginResponse retrieveUserData(String url, AuthRequest authRequest, String appKeyHeader) throws IOException {
 
         String json = objectMapper.writeValueAsString(authRequest);
