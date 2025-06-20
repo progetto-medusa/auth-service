@@ -22,7 +22,7 @@ public class AuthService {
     private final ExternalCallingService externalCallingService;
 
     public AuthResponse retrieveUserToken(AuthRequest authRequest, String appHeader) throws IOException {
-        String url = String.join("",userServiceProperties.getUrl(),"/progetto-medusa/login");
+        String url = String.join("",userServiceProperties.getUrl(),"/progetto-medusa/user/login");
         LoginResponse loginResponse = externalCallingService.retrieveUserData(
                 url,
                authRequest,
