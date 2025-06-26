@@ -23,7 +23,8 @@ public class AuthHelper {
                 .issuedAt(Instant.now())
                 .expiresAt(Instant.now().plusSeconds(60 * 30))
                 .subject(loginResponse.getDomain())
-                .claim("role", "user")
+                .claim("role", loginResponse.getRole())
+                .claim("uuid", loginResponse.getUuid())
                 .build();
         return jwtEncoder.encode(JwtEncoderParameters.from(jwtClaimsSet)).getTokenValue();
     }

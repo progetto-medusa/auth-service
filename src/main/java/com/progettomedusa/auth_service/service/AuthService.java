@@ -18,6 +18,7 @@ import java.io.IOException;
 public class AuthService {
 
     private final AuthHelper authHelper;
+    private final TokenRedisService tokenRedisService;
     private final UserServiceProperties userServiceProperties;
     private final ExternalCallingService externalCallingService;
 
@@ -33,7 +34,7 @@ public class AuthService {
         }
 
         String token = authHelper.createUserToken(loginResponse);
-
+        tokenRedisService.storeAuthToken(authRequest.getApplicationId(), token);
         return new AuthResponse(token);
     }
 }

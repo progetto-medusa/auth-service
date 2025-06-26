@@ -12,5 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoginResponse extends RestResponse{
+    private String role;
+    private String uuid;
     private Error error;
 }
