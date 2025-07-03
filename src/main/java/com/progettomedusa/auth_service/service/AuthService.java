@@ -35,7 +35,7 @@ public class AuthService {
 
         String token = authHelper.createUserToken(loginResponse);
         tokenRedisService.storeAuthToken(authRequest.getApplicationId(), token);
-        return new AuthResponse(token);
+        return new AuthResponse(token, loginResponse.getUuid());
     }
 }
 
